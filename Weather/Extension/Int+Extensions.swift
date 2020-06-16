@@ -1,5 +1,5 @@
 //
-//  Double+Extensions.swift
+//  Int+Extensions.swift
 //  Weather
 //
 //  Created by Sunghyup Kim on 2020/06/16.
@@ -8,14 +8,11 @@
 
 import Foundation
 
-extension Double {
+
+extension Int {
     
     func toString() -> String {
-        return String(format: "%.1f", self)
-    }
-    
-    func toInt() -> Int {
-        return Int(self)
+        return "\(self)"
     }
     
 }

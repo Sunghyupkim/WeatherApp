@@ -13,7 +13,7 @@ struct WeatherManager {
     
     private let API_KEY = "250c589f90a323ebaf48639bd3e6481e"
     
-    func fetchWeather(byCity city: String, completion: @escaping (Result<WeatherData, Error>) -> Void) {
+    func fetchWeather(byCity city: String, completion: @escaping (Result<WeatherModel, Error>) -> Void) {
         
         let query = city.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? city
         let path = "http://api.openweathermap.org/data/2.5/weather?q=%@&appid=%@&units=metric"
@@ -24,7 +24,8 @@ struct WeatherManager {
             
             switch response.result {
             case .success(let weatherData):
-                completion(.success(weatherData))
+                let model = weatherData.model
+                completion(.success(model))
             case .failure(let error):
                 completion(.failure(error))
             }
